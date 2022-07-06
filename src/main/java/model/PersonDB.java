@@ -3,12 +3,10 @@ package model;
 public class PersonDB {
     Person[] persons;
 
-    public PersonDB(){
-        NameList nameList=new NameList();
-        this.persons=new Person[nameList.personList.length];
-
-        for(int i=0;i<nameList.personList.length;i++){
-            Person pers=new Person(i); //enthält Name und Kontakte
+    public PersonDB(String[] namesArray){
+        this.persons=new Person[namesArray.length];
+        for(int i=0;i<namesArray.length;i++){
+            Person pers=new Person(i, namesArray);
             this.persons[i] = pers;
         }
     }

@@ -6,15 +6,14 @@ public class Person {
     String name;
     Contact[] kontakte;
 
-    public Person(int index) {
-        NameList names = new NameList();
-        this.kontakte = new Contact[names.personList.length];
-        this.name=names.personList[index];
-        for (int i = 0; i < names.personList.length; i++) {
+    public Person(int index, String[] namesArray) {
+        this.kontakte = new Contact[namesArray.length];
+        this.name=namesArray[index];
+        for (int i = 0; i < namesArray.length; i++) {
             if (this.kontakte[i] == null) {
-                this.kontakte[i] = new Contact(names.personList[i], 0);
+                this.kontakte[i] = new Contact(namesArray[i], 0);
             } else {
-                this.kontakte[i].name = names.personList[i];
+                this.kontakte[i].name = namesArray[i];
                 this.kontakte[i].contactedTimes = 0;
             }
         }
@@ -24,7 +23,7 @@ public class Person {
 
     public void contactCount(String name) {
         for (int i = 0; i < this.kontakte.length; i++) {
-            if (name == this.kontakte[i].name) {
+            if (name.equals(this.kontakte[i].name)) {
                 this.kontakte[i].contactedTimes++;
             }
         }

@@ -18,12 +18,9 @@ public class Groups {
         int rest = persons.length%groups;
         int maxGroupMembers=(persons.length)/groups;
 
-        System.out.println(maxGroupMembers);
         int count=0;
         while (count<persons.length-rest){
-
             int rand = (int) (Math.random()*groups);
-
             if(this.grps[rand].length<maxGroupMembers) {
                 addPersonToGroup(rand, persons[count]);
                 count++;
