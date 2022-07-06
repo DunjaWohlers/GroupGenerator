@@ -1,23 +1,22 @@
 package model;
 
+import java.util.Arrays;
+
 public class Groups {
-    Person[][] grps={new Person[0],new Person[0],new Person[0],new Person[0],new Person[0],new Person[0],new Person[0],new Person[0]};
+    Person[][] grps = {new Person[0], new Person[0], new Person[0], new Person[0], new Person[0], new Person[0], new Person[0], new Person[0]};
 
 
-    public Groups(Person[] persons, int groups){
+    public Groups(Person[] persons, int groups) {
 
         generateGroups(persons, groups);
     }
 
 
     public void generateGroups(Person[] persons, int groups){
-        for (int i=0;i<grps.length;i++) {
-            grps[i]=new Person [0];
-        }
+        Arrays.fill(grps, new Person[0]);
 
         int rest = persons.length%groups;
         int maxGroupMembers=(persons.length)/groups;
-
         int count=0;
         while (count<persons.length-rest){
             int rand = (int) (Math.random()*groups);
@@ -26,18 +25,16 @@ public class Groups {
                 count++;
             }
             else{
-                System.out.println("mist!");
+                System.out.println("Gruppe ist voll, nächste, Bitte!");
             }
         }
     }
 
     public void addPersonToGroup(int rand, Person pers){
         Person[] newGrp= new Person[this.grps[rand].length+1];
-        newGrp[this.grps[rand].length]=pers;
-        for (int i=0; i<newGrp.length-1;i++){
-            newGrp[i]=this.grps[rand][i];
-        }
-        this.grps[rand]=newGrp;
+        newGrp[this.grps[rand].length] = pers;
+        System.arraycopy(this.grps[rand], 0, newGrp, 0, newGrp.length - 1);
+        this.grps[rand] = newGrp;
     }
 
 

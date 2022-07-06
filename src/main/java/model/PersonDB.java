@@ -6,8 +6,7 @@ public class PersonDB {
     public PersonDB(String[] namesArray){
         this.persons=new Person[namesArray.length];
         for(int i=0;i<namesArray.length;i++){
-            Person pers=new Person(i, namesArray);
-            this.persons[i] = pers;
+            this.persons[i] = new Person(i, namesArray);
         }
     }
 
