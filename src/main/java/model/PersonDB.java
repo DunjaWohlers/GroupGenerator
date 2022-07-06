@@ -1,20 +1,23 @@
 package model;
 
-public class PersonDB {
-    Person[] persons;
+import java.util.*;
 
-    public PersonDB(String[] namesArray) {
-        this.persons = new Person[namesArray.length];
-        for (int i = 0; i < namesArray.length; i++) {
-            this.persons[i] = new Person(i, namesArray);
+public class PersonDB {
+    List<String> nameList;
+    List<Person> persons;
+
+    public PersonDB(List<String> namesArray) {
+        this.nameList = namesArray;
+        System.out.println(namesArray);
+        System.out.println(namesArray.size());
+        this.persons = new ArrayList<>() {
+        };
+        for (int i = 0; i < namesArray.size(); i++) {
+            persons.add(new Person(i, namesArray));
         }
     }
 
-    public Person[] getPersons() {
+    public List<Person> getPersons() {
         return persons;
-    }
-
-    public void setPersons(Person[] persons) {
-        this.persons = persons;
     }
 }
