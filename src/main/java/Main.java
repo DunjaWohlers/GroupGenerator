@@ -15,10 +15,10 @@ public class Main {
                 "Nicole", "Matthias", "Sara", "Asrar", "Ahmad",
                 "Sofia", "Merle", "Mehran", "Kai", "Claudia", "Alan"));
         PersonDB db = new PersonDB(namesArray);
-        generateNewGroupsInit(db);
+        generateNewGroups(db);
     }
 
-    public static void generateNewGroupsInit(PersonDB db) {
+    public static void generateNewGroups(PersonDB db) {
         String input = Input();
         int gruppenAnzahl = Integer.parseInt(input);
         Groups generator = new Groups(db.getPersons(), gruppenAnzahl);
@@ -28,10 +28,10 @@ public class Main {
         }
         counter++;
         System.out.println("Runde: " + counter);
-        for (int i = 0; i < generator.getGroupsList().size(); i++) {
+        for (int i = 0; i < gruppenAnzahl; i++) {
             System.out.println(generator.getGroupsList().get(i));
         }
-        generateNewGroupsInit(db);
+        generateNewGroups(db);
     }
 
     public static String Input() {

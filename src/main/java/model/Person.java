@@ -36,6 +36,11 @@ public class Person {
         return str.toString();
     }
 
+    public String toShortString() {
+        String str = "" + name;
+        return str;
+    }
+
     public String getName() {
         return name;
     }
