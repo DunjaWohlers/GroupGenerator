@@ -25,22 +25,27 @@ public class Main {
     }
 
     static void askForNewGroupAndGenerate(GroupService groupService) {
-        int groupsNumber;
+        int groupsNumber = 5;
         try {
             groupsNumber = Input();
-            groupService.generateNewGroups(groupsNumber);
-            System.out.println(groupService.getMeetingsGridToString());
         } catch (Exception e) {
             System.out.println("Gib bitte eie Nummer ein:");
-        } finally {
             askForNewGroupAndGenerate(groupService);
         }
+        groupService.generateNewGroups(groupsNumber);
+        System.out.println("Runde: " + groupService.getCounter());
+        System.out.println("Aktueller Minimumwert: " + groupService.getPersonService().getMinimalContactNumber());
+        //   System.out.println("Beispiel minimalPersonen: " + groupService.getPersonService().get4RandomPersonsWithMinContact());
+
+        System.out.println(groupService.getKeysForGridToString());
+        System.out.println(groupService.getMeetingsGridToString());
+
+        askForNewGroupAndGenerate(groupService);
     }
 
     public static int Input() {
         Scanner scan = new Scanner(System.in);
         return Integer.parseInt(scan.nextLine());
     }
-
 
 }

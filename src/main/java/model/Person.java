@@ -1,15 +1,31 @@
 package model;
-
+import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.Locale;
+import java.util.Map;
 
 public class Person {
     String name;
 
 
+    Map<String, Integer> contacts;
+
     public Person(String name) {
         this.name = name;
+        this.contacts = new HashMap<>();
+    }
+
+    public Map<String, Integer> getContacts() {
+        return contacts;
+    }
+
+    public void addEmptyContacts(List<String> names) {
+        names.forEach(name -> this.contacts.put(name.toLowerCase(Locale.ROOT), 0));
+    }
+
+    public void countContactByKey(String key) {
+        int inhalt = this.getContacts().get(key);
+        this.getContacts().replace(key, inhalt + 1);
     }
 
     @Override
